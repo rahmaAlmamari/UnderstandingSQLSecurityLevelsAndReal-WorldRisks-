@@ -289,6 +289,18 @@ ritgh click on the server -> Database -> choose DB -> security -> schema -> choo
 
 ![Schema permissions](./image/step6.png)
 
+![Schema permissions](./image/step6_part2.png)
+
+7. Connect as hr_login and access HR.Employees 
+
+![Schema permissions](./image/step7.png)
+
+8. Try to access Sales.Customers
+
+![Schema permissions](./image/step8.png)
+
+
+
 
 
 
