@@ -228,26 +228,39 @@ USE CompanyDB;
 ```
 2. Change the mode from windows authentaction to SQL server authentaction
 
+- SSMS Step:
 ritgh click on the server -> prperties -> security -> SQL authentaction -> ok (X2) -> right click on the server -> restart -> yes 
 
 ![Change the mode](./image/stepOne_ChanginMode.png)
 
 3. Create Logins
+
+- SQL Step:
 ```sql
 -- Create SQL Server logins
 CREATE LOGIN hr_login WITH PASSWORD = 'StrongPassword1!';
 CREATE LOGIN sales_login WITH PASSWORD = 'StrongPassword2!';
 ```
+- SSMS Step:
+ritgh click on the server -> security -> logins -> new login -> do the changes -> ok 
 
+![Create Logins](./image/stepTwo_CreateLogin.png)
 
 
 4. Create User
+
+- SQL Step:
 ```sql
 -- Create database users mapped to those logins
 USE CompanyDB;
 CREATE USER hr_user FOR LOGIN hr_login;
 CREATE USER sales_user FOR LOGIN sales_login;
 ```
+
+- SSMS Step:
+ritgh click on the server -> Database -> choose DB -> security -> user -> new user -> do the changes -> ok
+
+![Create User](./image/stepThree_CreateUser.png)
 
 
 
