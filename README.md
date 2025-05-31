@@ -238,8 +238,8 @@ ritgh click on the server -> prperties -> security -> SQL authentaction -> ok (X
 - SQL Step:
 ```sql
 -- Create SQL Server logins
-CREATE LOGIN hr_login WITH PASSWORD = 'StrongPassword1!';
-CREATE LOGIN sales_login WITH PASSWORD = 'StrongPassword2!';
+CREATE LOGIN rahma WITH PASSWORD = 'StrongPassword1!';
+CREATE LOGIN rahma WITH PASSWORD = 'StrongPassword2!';
 ```
 - SSMS Step:
 ritgh click on the server -> security -> logins -> new login -> do the changes -> ok 
@@ -253,14 +253,41 @@ ritgh click on the server -> security -> logins -> new login -> do the changes -
 ```sql
 -- Create database users mapped to those logins
 USE CompanyDB;
-CREATE USER hr_user FOR LOGIN hr_login;
-CREATE USER sales_user FOR LOGIN sales_login;
+CREATE USER hr_user FOR LOGIN rahma;
+CREATE USER sales_user FOR LOGIN rahma;
 ```
 
 - SSMS Step:
 ritgh click on the server -> Database -> choose DB -> security -> user -> new user -> do the changes -> ok
 
 ![Create User](./image/stepThree_CreateUser.png)
+
+5. Schema permissions 
+
+- SQL Step:
+```sql
+-- Create database users mapped to those logins
+USE CompanyDB;
+-- Grant HR user access to only HR schema
+GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA::HR TO rahma;
+DENY SELECT, INSERT, UPDATE, DELETE ON SCHEMA::Sales TO rahma;
+
+-- Grant Sales user access to only Sales schema
+GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA::Sales TO rahma;
+DENY SELECT, INSERT, UPDATE, DELETE ON SCHEMA::HR TO rahma;
+
+```
+
+- SSMS Step:
+ritgh click on the server -> Database -> choose DB -> security -> schema -> choose schema -> do the changes -> ok
+
+![Schema permissions](./image/step4_partone.png)
+
+![Schema permissions](./image/step4_parttwo.png)
+
+6. Query results showing access works only for their assigned schema 
+
+![Schema permissions](./image/step4_parttwo.png)
 
 
 
