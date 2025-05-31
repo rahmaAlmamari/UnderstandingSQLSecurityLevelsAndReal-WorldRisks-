@@ -124,18 +124,18 @@ A Object-level permissions control what a user can do with specific objects insi
 |Insider misuse           |	Sabotage, data leaks                    |A former employee downloads client data before quitting and shares it with competitors |
 |No auditing              |	Lack of accountability and traceability |Data was deleted, but there's no way to kno who did it because all staff used the same login |
 
-## **1. How You Created Logins, Users, and Schemas:**
+## **How You Created Logins, Users, and Schemas:**
 
 In SQL Server, you handle security in three steps:
 
-**1.1. Create a Login (Server-level)**
+**1. Create a Login (Server-level)**
 This is how a user is allowed to connect to the SQL Server instance:
 ```sql 
 -- Create a SQL Server login
 CREATE LOGIN john_login WITH PASSWORD = 'StrongPassword123!';
 ```
 
-**1.2. Create a User (Database-level)**
+**2. Create a User (Database-level)**
 You then map the login to a specific database by creating a user inside that database.
 ```sql
 -- Switch to the desired database
@@ -145,14 +145,14 @@ USE SalesDB;
 CREATE USER john_user FOR LOGIN john_login;
 ```
 
-**1.3. Create a Schema and Assign It**
+**3. Create a Schema and Assign It**
 Schemas are used to group database objects and organize permissions.
 ```sql 
 -- Create a new schema for sales-related data
 CREATE SCHEMA sales AUTHORIZATION john_user;
 ```
 
-## **2. How Schema Permissions Limited Access:**
+## **How Schema Permissions Limited Access:**
 
 After setting up logins, users, and schemas, we grant or deny permissions on the schema. This controls what a user can do.
 
@@ -171,7 +171,7 @@ DENY INSERT, UPDATE, DELETE ON SCHEMA::sales TO john_user;
 
 This ensures minimum access, following the Principle of Least Privilege.
 
-## **3. How This Applies to Real Companies:**
+## **How This Applies to Real Companies:**
 
 **Example: Retail Company (Like Amazon or Carrefour)**
 - _Sales Team_ can read customer and product data but cannot modify it.
@@ -187,5 +187,68 @@ This ensures minimum access, following the Principle of Least Privilege.
 - Each department works in their own area safely.
 - No one accidentally (or intentionally) deletes another team’s data.
 - Easier auditing and better data governance.
+
+------------------------------------------------------------------------
+
+# **Enforcing Schema-Level Access in a Company Database**
+
+## **Scenario:** 
+
+You are the database administrator of a system that contains two main departments: 
+ - HR (Human Resources) 
+ - Sales 
+Your job is to restrict access so that each department only views and works with its own data. 
+
+## **Objective:**
+
+1. Create SQL logins and map them to users inside the database. 
+2. Create two schemas: HR and Sales. 
+3. Create a few sample tables inside each schema. 
+4. Assign schema-level permissions so: 
+   - HR users cannot access Sales data. 
+   - Sales users cannot access HR data. 
+
+## **Task Output Checklist:**
+
+1. Take screenshots of: 
+   - Login creation 
+   - User creation 
+   - Schema permissions 
+   - Query results showing access works only for their assigned schema 
+2. Try to: 
+   - Connect as hr_login and access HR.Employees (should work)   
+   - Try to access Sales.Customers (should be denied) 
+
+**SOLUTION:**
+
+1. Create the Database
+```sql
+CREATE DATABASE CompanyDB;
+USE CompanyDB;
+```
+2. Change the mode from windows authentaction to SQL server authentaction
+
+ritgh click on the server -> prperties -> security -> SQL authentaction -> ok (X2) -> right click on the server -> restart -> yes 
+
+![Change the mode](./image/stepOne_ChanginMode.png)
+
+3. Create Logins
+```sql
+-- Create SQL Server logins
+CREATE LOGIN hr_login WITH PASSWORD = 'StrongPassword1!';
+CREATE LOGIN sales_login WITH PASSWORD = 'StrongPassword2!';
+```
+
+
+
+4. Create User
+```sql
+-- Create database users mapped to those logins
+USE CompanyDB;
+CREATE USER hr_user FOR LOGIN hr_login;
+CREATE USER sales_user FOR LOGIN sales_login;
+```
+
+
 
 
