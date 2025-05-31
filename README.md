@@ -287,7 +287,7 @@ ritgh click on the server -> Database -> choose DB -> security -> schema -> choo
 
 6. Query results showing access works only for their assigned schema 
 
-![Schema permissions](./image/step4_parttwo.png)
+![Schema permissions](./image/step6.png)
 
 
 
