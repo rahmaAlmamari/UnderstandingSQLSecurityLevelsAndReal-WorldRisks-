@@ -299,7 +299,23 @@ ritgh click on the server -> Database -> choose DB -> security -> schema -> choo
 
 ![Schema permissions](./image/step8.png)
 
+9. Why schema-level security is better than table-by-table permissions?
 
+   - Schema-level security:
+     - Is easier to manage—you only assign permissions once per schema.
+     - Ensures consistent access control across all tables inside the schema.
+     - Makes it easier to scale—just add tables to the schema, and users get the right access automatically.
+
+   - In contrast, table-by-table permissions:
+     - Are tedious to manage as the number of tables grows.
+     - Prone to misconfiguration (e.g., forgetting to restrict a new table).
+
+10. How this setup supports real-world data segregation?
+
+   - In real companies:
+     - Different departments should not access each other’s data (e.g., HR shouldn't see sales leads).
+     - This setup enforces data boundaries while still using the same database.
+     - It supports security, compliance, and auditing requirements.
 
 
 
