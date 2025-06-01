@@ -14,6 +14,8 @@ CREATE TABLE HR.Employees (
 
 INSERT INTO HR.Employees VALUES (1, 'Alice', 'Manager'), (2, 'Bob', 'Analyst');
 
+SELECT * FROM HR.Employees;
+
 -- Sales schema tables
 CREATE TABLE Sales.Customers (
     CustomerID INT PRIMARY KEY,
@@ -21,9 +23,10 @@ CREATE TABLE Sales.Customers (
     Region NVARCHAR(50)
 );
 
-
-
 INSERT INTO Sales.Customers VALUES (1, 'Acme Corp', 'East'), (2, 'Beta LLC', 'West');
+
+SELECT * FROM Sales.Customers;
+
 
 
 

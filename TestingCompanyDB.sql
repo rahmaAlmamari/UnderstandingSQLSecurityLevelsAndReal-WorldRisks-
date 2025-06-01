@@ -14,9 +14,10 @@ ALTER ROLE ReadOnly_Dev ADD MEMBER DevUser;
 
 -- As DevUser (member of ReadOnly_Dev role)
 
+EXECUTE AS USER = 'DevUser';
 -- This will work
 SELECT * FROM HR.Employees;
 
 -- These will fail
-INSERT INTO HR.Employees VALUES (...);
-DELETE FROM HR.Employees WHERE EmployeeID = 123;
+USE master;
+SELECT * FROM Sales.Customers;
