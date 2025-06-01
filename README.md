@@ -355,7 +355,17 @@ The following security incidents occurred due to improper access controls in the
 
 - **Impact:** This led to permission issues for HR team users, disrupting their ability to access necessary data.
 
+### **2. Root Causes**
 
+- These problems stem from fundamental security and access control flaws:
+
+- **No Environment Separation:** There was no clear separation between development and production environments, increasing the risk of accidental data manipulation.
+
+- **Excessive Permissions:** Adil had unrestricted access to the production database, which is inappropriate for a developer role.
+
+- **Lack of Schema-Level Control:** Developers were allowed to create or alter tables in any schema, leading to permission conflicts.
+
+- **Uncontrolled Role Management:** Adil was able to create new user roles without oversight, violating role-based access principles.
 
 
 
