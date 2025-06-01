@@ -21,6 +21,10 @@ CREATE TABLE Sales.Customers (
     Region NVARCHAR(50)
 );
 
+
+
 INSERT INTO Sales.Customers VALUES (1, 'Acme Corp', 'East'), (2, 'Beta LLC', 'West');
+
+
 
 

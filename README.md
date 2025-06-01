@@ -462,9 +462,11 @@ ALTER ROLE ReadOnly_Dev ADD MEMBER DevUser;
 SELECT * FROM HR.Employees;
 
 -- These will fail
-INSERT INTO HR.Employees VALUES (...);
-DELETE FROM HR.Employees WHERE EmployeeID = 123;
+SELECT * FROM Sales.Customers;
 ```
+![Schema permissions](./image/UnauthoriztionTest1.png)
+
+![Schema permissions](./image/UnauthoriztionTest2.png)
 
 **Result:**
 
