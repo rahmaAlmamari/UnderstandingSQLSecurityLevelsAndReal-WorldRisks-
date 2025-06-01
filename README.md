@@ -323,6 +323,38 @@ ritgh click on the server -> Database -> choose DB -> security -> schema -> choo
 
 ## **Security Risk Report: "The Overpowered Developer"**
 
+### **1. Summary of the Problems**
+
+The following security incidents occurred due to improper access controls in the Payroll Management System development environment:
+
+**1.1 Accidental Data Deletion**
+
+- **Incident:** Developer Adil mistakenly executed a
+ ```sql 
+ DELETE FROM Employees 
+ ``` 
+ command on the production database instead of the test environment.
+
+- **Impact:** Critical employee data was lost permanently due to the absence of a recent backup.
+
+**1.2 Salary Data Leak**
+
+- **Incident:** Adil exported a salary report for testing and accidentally shared the file with an external UI developer.
+
+- **Impact:** Confidential salary information was leaked outside the organization.
+
+**1.3 Unauthorized Role Creation**
+
+- **Incident:** Adil created a SQL login for a junior developer without notifying the database administrator.
+
+- **Impact:** The junior developer accessed sensitive HR data they were not authorized to see.
+
+**1.4 Schema Confusion**
+
+- **Incident:** Adil created new tables under the dbo schema instead of the HR schema.
+
+- **Impact:** This led to permission issues for HR team users, disrupting their ability to access necessary data.
+
 
 
 
