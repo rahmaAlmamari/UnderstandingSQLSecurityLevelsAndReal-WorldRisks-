@@ -411,6 +411,34 @@ To prevent such incidents in the future, the following measures should be implem
 
 - Enforce strict firewall and VPN rules to isolate environments.
 
+### **4. Lessons Learned**
+
+**4.1 Developer Access**
+
+- Developers should only have access to development databases with mock or masked data.
+
+- All access to production data should be read-only and strictly monitored.
+
+**4.2 Admin Responsibilities**
+
+- Only DBAs or designated security admins should:
+
+  - Create new users and roles.
+
+  - Modify schema objects in production.
+
+  - Handle backups and recovery procedures.
+
+**4.3 Importance of Minimum Privilege**
+
+- Limiting access minimizes:
+
+  - Human error (e.g., accidental deletion).
+
+  - Data breaches due to accidental or malicious actions.
+
+- It enhances data integrity and confidentiality by reducing the attack surface.
+
 
 
 
