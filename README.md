@@ -317,6 +317,14 @@ ritgh click on the server -> Database -> choose DB -> security -> schema -> choo
      - This setup enforces data boundaries while still using the same database.
      - It supports security, compliance, and auditing requirements.
 
+-----------------------------------------------------------------------------------------------------------------------
+
+# **Security Scenario: When Access Goes Wrong**
+
+## **Security Risk Report: "The Overpowered Developer"**
+
+
+
 
 
 
