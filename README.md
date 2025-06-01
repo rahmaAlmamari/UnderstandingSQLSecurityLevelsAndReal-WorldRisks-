@@ -367,6 +367,52 @@ The following security incidents occurred due to improper access controls in the
 
 - **Uncontrolled Role Management:** Adil was able to create new user roles without oversight, violating role-based access principles.
 
+### **3. Suggested Solutions**
+
+To prevent such incidents in the future, the following measures should be implemented:
+
+**3.1 Schema-Level Permissions**
+
+- Assign explicit permissions for each schema.
+
+- Only the HR team and DBAs should have access to the HR schema.
+
+- Developers can be given access to a dedicated development schema.
+
+**3.2 Role Separation and Minimum Privilege**
+
+- Implement role-based access control (RBAC):
+
+  - **Developers:** Read-only or limited write access in non-production environments.
+
+  - **Junior developers:** Read-only access.
+
+  - **DBAs/Admins:** Full access in production environments.
+
+- Apply the Principle of Least Privilege (PoLP) to ensure users only have the access they strictly need.
+
+**3.3 Use of Views to Protect Sensitive Data**
+
+- Use SQL views to limit visibility of sensitive columns like salaries and personal information.
+
+- Developers should interact with these views instead of raw tables.
+
+**3.4 Audit Logging and Role Creation Restrictions**
+
+- Enable audit logging to track all changes and access to production data.
+
+- Restrict role and login creation to database administrators only.
+
+**3.5 Environment Separation**
+
+- Maintain completely separate environments for development, testing, and production.
+
+- Use anonymized or mock data in dev/test environments.
+
+- Enforce strict firewall and VPN rules to isolate environments.
+
+
+
 
 
 
